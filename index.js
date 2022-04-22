@@ -64,7 +64,7 @@ else {
         console.log(`Logged in as ${client.user.tag}`)
     })
     client.on("interactionCreate", (interaction) => {
-        aync function handleCommand() {
+        async function handleCommand() {
             if (!interaction.isCommand()) return 
 
             const slashcmd = client.slashcommands.get(interaction.commandName)
