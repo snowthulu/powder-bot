@@ -4,9 +4,15 @@ const Discord = require('discord.js')
 const dotenv = require("dotenv")
 
 const generateImage = require("./generateImage")
+const { intersection } = require('zod')
 
 dotenv.config()
 const TOKEN = process.env.TOKEN
+
+const LOAD_SLASH = process.argv[2] == "load"
+
+const CLIENT_ID = "967003092786761778"
+const GUILD_ID = "938584904126566481"
 
 const client = new Discord.Client({
     intents:[
@@ -16,6 +22,7 @@ const client = new Discord.Client({
         "GUILD_MEMBERS"
     ]
 })
+
 
 client.on('ready', () => {
     console.log('Logged in as ${client.user.tag}')
@@ -39,3 +46,5 @@ client.on("guildMemberAdd", async (member) => {
         files: [img]
     })
 })
+
+client.login(TOKEN)
